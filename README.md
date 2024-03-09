@@ -10,7 +10,7 @@ Para el 2027 seremos una compañía líder en Colombia en la implementación, pr
 
 ## Misión
 
-Ofrecemos consultoría especializada en ciberseguridad con evaluaciones personalizadas de seguridad (Blue team y Red Team), desarrollo de soluciones en software de ciberseguridad y venta de productos de ciberseguridad de hardware y de software.
+Brindamos consultoría especializada en ciberseguridad con evaluaciones personalizadas de seguridad (Blue team y Red Team), desarrollo de soluciones en software de ciberseguridad y venta de productos de ciberseguridad de hardware y de software.
 ## Equipo de trabajo
 
 - [David Martinez](https://github.com/DavidMT7)
