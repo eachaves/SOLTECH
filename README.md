@@ -5,7 +5,7 @@ Somos una empresa dedicada a la consultoría especializada en ciberseguridad. Of
 
 ## Visión
 
-Para el 2027 seremos una compañía líder en Colombia en la implementación, prestación de servicios profesionales, soluciones y productos de seguridad informática y seguridad ofensiva para el sector Corporativo, público y privado, permaneciendo en la vanguardia e innovando frente a toda amenaza nueva que surja.
+Para el 2027 seremos una compañía líder en Colombia en la implementación, prestación de servicios profesionales, soluciones y productos de seguridad informática y seguridad ofensiva para el sector Corporativo, público y privado, innovando y permaneciendo en la vanguardia frente a toda amenaza informática que surja.
 
 
 ## Misión
