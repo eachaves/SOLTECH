@@ -1,0 +1,15 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0; /* Elimina el padding para que el color de fondo se extienda */
+  text-align: center;
+  height: 100vh; /* Asegura que el contenedor tenga al menos la altura de la pantalla */
+  background-color: #262626; /* Establece el color de fondo para todo el contenedor */
+}
+
+/* Estilos para los enlaces de navegación */
+.nav-link {
+  margin: 0 1rem; /* Añade un espacio horizontal entre los enlaces */
+  color: white; /* O el color que prefieras para los enlaces */
+  text-decoration: none; /* Elimina el subrayado de los enlaces */
+}
