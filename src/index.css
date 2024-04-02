@@ -1,3 +1,7 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400&display=swap');
 
 @font-face {
@@ -5,43 +9,17 @@
     src: url('fonts/URBAN TRIBE.ttf') format('truetype');
 }
 
-nav {
-  display: flex;
-  justify-content: space-between; /* Esto alinea los elementos a los extremos */
-  padding: 0 10%; /* Esto agrega un relleno a los lados */
+
+body {
+    font-family: 'Roboto Condensed', sans-serif;
+    background-image: "/images/fondo.jpg";
 }
-
-ul {
-    display: flex;
-    list-style: none;
-    gap: 30px; /* Esto define el espacio entre los elementos de la lista */
-    margin: 0; /* Esto elimina cualquier margen por defecto */
-    padding: 10px; /* Esto elimina cualquier relleno por defecto */
-    margin-top: 40px; /* Ajusta este valor para bajar los títulos según necesites */
-    margin-left: 220px; /* Aumenta este valor para mover la lista hacia la derecha */
-  }
-
-li {
-  font-family: 'Roboto Condensed', sans-serif;
-}
-
 
 .ciberseguridad {
     font-family: 'Urban Tribe', sans-serif;
-    font-size: 50px; /* Ajusta el tamaño de la fuente según tus necesidades */
+    font-size: 60px; /* Ajusta el tamaño de la fuente según tus necesidades */
     position: relative; /* o 'absolute' si necesitas sacar el elemento del flujo normal del documento */
     top: 105px; /* Aumenta este valor para bajar la palabra en la pantalla */
     /* Asegúrate de incluir el resto de tus estilos aquí */
 }
 
-.logo-container {
-    position: absolute;
-    top: 40px; /* Aumenta este valor para bajar el logo */
-    left: 20px;
-    z-index: 100;
-  }
-  
-  .logo-container img {
-    width: 200px; /* O el tamaño que prefieras */
-    height: auto;
-  }
