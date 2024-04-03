@@ -7,7 +7,6 @@ function App() {
   return (
     <main className= "w-full">
 
-      <NavBar /> 
 
       <section className='px-12 w-4/4 relative grid h-[33.5rem] grid-rows-2 '>
         <h1 className="ciberseguridad row-start-1 text-white">
