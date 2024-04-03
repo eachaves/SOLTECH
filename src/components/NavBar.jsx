@@ -8,6 +8,9 @@ export default function NavBar() {
         { title: "NOSOTROS", link: "/nosotros" },
         { title: "CONTÁCTANOS", link: "/contacto" },
     ];
+    const login = [
+        { title: "LOGIN", link: "/login" }
+    ]
 
     return (
         <>
@@ -19,12 +22,21 @@ export default function NavBar() {
                     <ul className="flex px-15 justify-between w-3/4">
                         {menuItems.map(({ title, link }) => (
                             <Link key={link} to={link}>
-                                <a className="hover:underline hover:text-blue-500 transition ease-in-out duration-200 font-normal text-white tracking-wider">
+                                <a className="hover:underline hover:text-blue-800 transition ease-in-out duration-200 font-normal text-white tracking-wider">
                                     {title}
                                 </a>
                             </Link>
                         ))}
-                        <li><a className="rounded-full border-white border-2 transition-all px-5 py-1 font-normal tracking-wider text-white">LOGIN</a></li>
+                        <li>
+                            {login.map(({ title, link }) => (
+                                <Link key={link} to={link}>
+                                    <a className="rounded-full border-white border-2 transition-all px-5 py-1 font-normal tracking-wider text-white hover:bg-blue-800/35">
+                                        {title}
+                                    </a>
+                                </Link>
+                            ))}
+                            
+                        </li>
                     </ul>
                 </nav>
             </header>
