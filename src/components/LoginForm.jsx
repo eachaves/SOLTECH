@@ -20,7 +20,7 @@ export default function Login({ email, password, error, handleemailChange, handl
                         </div>
                         <button className="bg-blue-500 hover:bg-blue-700 text-white uppercase text-sm font-semibold px-6 py-2 rounded">Acceder</button>
                     </form>
-                    <p className="text-blue-700 text-center text-sm" href="/login">¿Olvidaste tu contraseña?</p>
+                    <a className="text-blue-700 text-center text-sm" href="/login">¿Olvidaste tu contraseña?</a>
                 </div>
             </div>
         </main>

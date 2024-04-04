@@ -19,7 +19,7 @@ export default function NavBar() {
                     <img className="w-90 flex flex-row px-7 py-4" src="/logo.svg" alt="Logo" style={{ fill: "white" }} />
                 </div>
                 <nav className="w-3/4 flex flex-row items-center justify-center px-3 py-3">
-                    <ul className="flex px-15 justify-between w-3/4">
+                    <ul className="flex px-15 justify-between items-center w-3/4">
                         {menuItems.map(({ title, link }) => (
                             <Link key={link} to={link}>
                                 <p className="hover:underline hover:text-blue-800 transition ease-in-out duration-200 font-normal text-white tracking-wider">
