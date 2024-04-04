@@ -5,7 +5,7 @@ export default function ServiceCard ({service}) {
     return (
         <>
             <main>
-            <div className="w-64 mx-4 mt-16 bg-white shadow-xl rounded-lg text-gray-900 bg-blue-300/15">
+            <div className="w-64 mx-4 mt-16 bg-white shadow-xl rounded-lg text-gray-900">
                 <div className="rounded-t-lg h-auto overflow-hidden flex flex-col items-center text-justify text-wrap">
                     
                     <img className="w-full object-cover" src={`/${image}.png`} alt="Service" />
