@@ -10,9 +10,9 @@ class App extends React.Component {
     super(props);
 
     this.state = {
-      email: "",
+      username: "",
       password: "",
-      error: "",
+      or: "",
       isAuthenticated: false,
     };
   }
@@ -37,9 +37,9 @@ class App extends React.Component {
         this.setState({isAuthenticated: false}); // Update the component's state
       }
     })
-      //// Handle any errors that occurred during the fetch
-    .catch((err) => {
-      console.log(err);
+      //// Handle any ors that occurred during the fetch
+    .catch(() => {
+      console.log();
     });
   }
   
@@ -53,10 +53,10 @@ class App extends React.Component {
     })
     .then((res) => res.json())
     .then((data) => {
-      console.log("You are logged in as: " + data.email);
+      console.log("You are logged in as: " + data.username);
     })
-    .catch((err) => {
-      console.log(err);
+    .catch(() => {
+      console.log();
     });
   }
 
@@ -64,15 +64,15 @@ class App extends React.Component {
     this.setState({password: event.target.value});
   }
 
-  handleemailChange = (event) => {
-    this.setState({email: event.target.value});
+  handleUserNameChange = (event) => {
+    this.setState({username: event.target.value});
   }
 
   isResponseOk(response) {
     if (response.status >= 200 && response.status <= 299) {
       return response.json();
     } else {
-      throw Error(response.statusText);
+      throw or(response.statusText);
     }
   }
 
@@ -87,16 +87,16 @@ class App extends React.Component {
         "X-CSRFToken": cookies.get("csrftoken"),
       },
       credentials: "same-origin",
-      body: JSON.stringify({email: this.state.email, password: this.state.password}),
+      body: JSON.stringify({username: this.state.username, password: this.state.password}),
     })
     .then(this.isResponseOk)
     .then((data) => {
       console.log(data);
-      this.setState({isAuthenticated: true, email: "", password: "", error: ""});
+      this.setState({isAuthenticated: true, username: "", password: "", or: ""});
     })
-    .catch((err) => {
-      console.log(err);
-      this.setState({error: "Email o contraseña incorrectas."});
+    .catch(() => {
+      console.log();
+      this.setState({or: "Wrong username or password."});
     });
   }
 
@@ -110,8 +110,8 @@ class App extends React.Component {
       console.log(data);
       this.setState({isAuthenticated: false});
     })
-    .catch((err) => {
-      console.log(err);
+    .catch(() => {
+      console.log();
     });
   };
 
@@ -120,14 +120,16 @@ class App extends React.Component {
   render() {
     if (!this.state.isAuthenticated) {
       return (
-        <LoginForm 
-            email={this.state.email}
-            password={this.state.password}
-            error={this.state.error}
-            handleemailChange={this.handleemailChange}
-            handlePasswordChange={this.handlePasswordChange}
-            login={this.login}
-        />
+        <>
+            <LoginForm 
+                email={this.state.email}
+                password={this.state.password}
+                or={this.state.or}
+                handleemailChange={this.handleemailChange}
+                handlePasswordChange={this.handlePasswordChange}
+                login={this.login}
+            />
+        </>
       );
     }
     return (

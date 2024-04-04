@@ -22,17 +22,17 @@ export default function NavBar() {
                     <ul className="flex px-15 justify-between w-3/4">
                         {menuItems.map(({ title, link }) => (
                             <Link key={link} to={link}>
-                                <a className="hover:underline hover:text-blue-800 transition ease-in-out duration-200 font-normal text-white tracking-wider">
+                                <p className="hover:underline hover:text-blue-800 transition ease-in-out duration-200 font-normal text-white tracking-wider">
                                     {title}
-                                </a>
+                                </p>
                             </Link>
                         ))}
                         <li>
                             {login.map(({ title, link }) => (
                                 <Link key={link} to={link}>
-                                    <a className="rounded-full border-white border-2 transition-all px-5 py-1 font-normal tracking-wider text-white hover:bg-blue-800/35">
+                                    <p className="rounded-full border-white border-2 transition-all px-5 py-1 font-normal tracking-wider text-white hover:bg-blue-800/35">
                                         {title}
-                                    </a>
+                                    </p>
                                 </Link>
                             ))}
                             
