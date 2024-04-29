@@ -1,4 +1,3 @@
-import React from 'react'
 import ServiceCard from '../components/serviceCard'
 import { servicesBD } from '../data/servicesBD'
 

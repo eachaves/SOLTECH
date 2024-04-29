@@ -1,6 +1,6 @@
 export default function ServiceCard ({service}) {
 
-    const {id, name, image, description} = service;
+    const {name, image, description} = service;
 
     return (
         <>
