@@ -43,3 +43,14 @@ def get_all_users() -> list:
         return users
     except Exception as e:
         raise Exception(str(e), 500)
+    
+def delete_user(email: str) -> None:
+    try:
+        user = User.objects.get(email=email)
+        if user is None:
+            raise Exception('User not found')
+        user.delete()
+    except Exception as e:
+        if e.args[0] == 'User not found':
+            raise Exception('User not found', 404)
+        raise Exception(str(e), 500)

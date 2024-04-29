@@ -2,7 +2,7 @@ from .serializer import UserSerializer
 from rest_framework.response import Response
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework import status
-from .services.auth import login, signup, get_all_users
+from .services.auth import login, signup, get_all_users, delete_user
 from rest_framework_simplejwt.tokens import RefreshToken
 from rest_framework.permissions import IsAuthenticated
 
@@ -47,3 +47,12 @@ def get_all_users_view(request):
         return Response(UserSerializer(users, many=True).data, status=status.HTTP_200_OK)
     except Exception as e:
         return Response(str(e), status=500)
+
+@api_view(['DELETE'])
+@permission_classes([IsAuthenticated])
+def delete_user_view(request):
+    try:
+        user = delete_user(request.data['email'])
+        return Response('User deleted', status=status.HTTP_200_OK)
+    except Exception as e:
+        return Response({'message': e.args[0]}, status=e.args[1])
