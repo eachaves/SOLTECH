@@ -2,7 +2,7 @@ export default function About() {
   return (
     <>
       <div className="p-4 w-full px-40 bg-gray-100 rounded-md shadow-md text-justify">
-        <img className="mx-auto w-96" src="./public/logoblack.svg"></img>
+        <img className="mx-auto w-96" src="logoblack.svg"></img>
         <h2 className="text-xl font-bold mb-4">Visión:</h2>
         <p className="mb-6">
           Para el 2027, aspiramos a ser una compañía líder en Colombia en la
