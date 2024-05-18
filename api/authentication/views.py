@@ -6,6 +6,7 @@ from .services.auth import login, signup, get_all_users, delete_user, get_user
 from rest_framework_simplejwt.tokens import RefreshToken
 from rest_framework.permissions import IsAuthenticated
 
+
 @api_view(['POST'])
 def login_view(request):
     try:
