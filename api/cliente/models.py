@@ -1,10 +1,12 @@
 from django.db import models
 from ..authentication.models import User
+from django.utils.translation import gettext_lazy as _
+
 # Create your models here.
 
 class Cliente(models.Model):
     user= models.OneToOneField(User, on_delete=models.CASCADE)
-    telefono = models.IntegerField(max_length=12)
+    telefono = models.IntegerField()
     avatar = models.URLField()
     bio= models.TextField()
     

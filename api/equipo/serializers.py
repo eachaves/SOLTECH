@@ -5,11 +5,11 @@ class EquipoSerializer(serializers.ModelSerializer):
     class Meta:
         model = Equipo
         fields = '__all__'
-
+        
 class EquipoSerializerCreate(serializers.ModelSerializer):
     class Meta:
         model = Equipo
-        fields = ['empresa', 'urlImagen', 'nombreEquipo', 'descripcion', 'precio', 'stock']
+        fields = ['urlImagen', 'nombreEquipo', 'descripcion', 'precio', 'stock']
     
 class EquipoSerializerUpdate(serializers.Serializer):
     urlImagen = serializers.CharField(required=False)

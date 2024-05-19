@@ -71,3 +71,14 @@ def get_user(username: str) -> User:
         if e.args[0] == 'User not found':
             raise Exception('User not found', 404)
         raise Exception(str(e), 500)
+
+def get_user_by_id(id: int) -> User:
+    try:
+        user = User.objects.get(id=id)
+        if user is None:
+            raise Exception('User not found')
+        return user
+    except Exception as e:
+        if e.args[0] == 'User not found':
+            raise Exception('User not found', 404)
+        raise Exception(str(e), 500)

@@ -38,8 +38,11 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'api.authentication',
-    'api.empresa',
     'api.equipo',
+    'api.cliente',
+    'api.compra',
+    'api.consultoria',
+    'api.empleado',
     'rest_framework',
     'rest_framework_simplejwt',
 
@@ -55,7 +58,7 @@ AUTH_USER_MODEL = 'authentication.User'
 from datetime import timedelta
 
 SIMPLE_JWT = {
-    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=1),
+    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=60),
     'REFRESH_TOKEN_LIFETIME': timedelta(days=1),
     'ROTATE_REFRESH_TOKENS': False,
     'BLACKLIST_AFTER_ROTATION': True,

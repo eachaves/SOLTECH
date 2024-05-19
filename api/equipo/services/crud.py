@@ -1,15 +1,12 @@
 from ..models import Equipo
 from ..serializers import EquipoSerializer, EquipoSerializerUpdate
-from api.empresa.services.crud import get_by_id as get_empresa_by_id
 
 def create(equipo: EquipoSerializer) -> Equipo:
     try:
-        empresa = get_empresa_by_id(equipo.data['empresa'])
         equipo = Equipo(
             nombreEquipo=equipo.data['nombreEquipo'],
             urlImagen=equipo.data['urlImagen'],
             descripcion=equipo.data['descripcion'],
-            empresa=empresa,
             precio=equipo.data['precio'],
             stock=equipo.data['stock']
         )
