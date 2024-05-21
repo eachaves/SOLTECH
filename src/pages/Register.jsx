@@ -1,88 +1,73 @@
-import React from "react";
+import { useState, useEffect } from "react";
 import Cookies from "universal-cookie";
 import RegisterForm from "../components/RegisterForm";
 
-// Instantiating Cookies class by creating cookies object
 const cookies = new Cookies();
 
-class App extends React.Component {
-  constructor(props) {
-    super(props);
+export default function Register() {
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
 
-    this.state = {
-      username: "",
-      email: "",
-      password: "",
-      error: "",
-      isAuthenticated: false,
-    };
-  }
+  useEffect(() => {
+    getSession();
+  }, []);
 
-  componentDidMount() {
-    this.getSession();
-  }
-
-  // Get Session Method
-  getSession = () => {
+  const getSession = () => {
     // Aquí iría la lógica para obtener la sesión actual, si existe
-  }
+  };
 
-  // Who Am I method
-  whoami = () => {
+  const whoami = () => {
     // Aquí iría la lógica para verificar quién está autenticado
-  }
+  };
 
-  handleUsernameChange = (event) => {
-    this.setState({username: event.target.value});
-  }
+  const handleUsernameChange = (event) => {
+    setUsername(event.target.value);
+  };
 
-  handleEmailChange = (event) => {
-    this.setState({email: event.target.value});
-  }
+  const handleEmailChange = (event) => {
+    setEmail(event.target.value);
+  };
 
-  handlePasswordChange = (event) => {
-    this.setState({password: event.target.value});
-  }
+  const handlePasswordChange = (event) => {
+    setPassword(event.target.value);
+  };
 
-  isResponseOk = (response) => {
+  const isResponseOk = (response) => {
     // Aquí iría la lógica para verificar si la respuesta de la API está bien
-  }
+  };
 
-  // Register Method
-  register = (event) => {
+  const register = (event) => {
     event.preventDefault();
     // Aquí iría la lógica para manejar el registro
     // Por ejemplo, hacer una solicitud POST a tu API de registro
-  }
+  };
 
-  // Logout Method
-  logout = () => {
+  const logout = () => {
     // Aquí iría la lógica para cerrar la sesión
-  }
+  };
 
-  // UI Rendering
-  render() {
-    if (!this.state.isAuthenticated) {
-      return (
-        <RegisterForm 
-          username={this.state.username}
-          email={this.state.email}
-          password={this.state.password}
-          error={this.state.error}
-          handleUsernameChange={this.handleUsernameChange}
-          handleEmailChange={this.handleEmailChange}
-          handlePasswordChange={this.handlePasswordChange}
-          register={this.register}
+  return (
+    <>
+      {!isAuthenticated ? (
+        <RegisterForm
+          username={username}
+          email={email}
+          password={password}
+          error={error}
+          handleUsernameChange={handleUsernameChange}
+          handleEmailChange={handleEmailChange}
+          handlePasswordChange={handlePasswordChange}
+          register={register}
         />
-      );
-    }
-    return (
-      <div className="container mt-3">
-        <p>Registro exitoso</p>
-        <button onClick={this.logout}>Cerrar sesión</button>
-      </div>
-    )
-  }
+      ) : (
+        <div className="container mt-3">
+          <p>Registro exitoso</p>
+          <button onClick={logout}>Cerrar sesión</button>
+        </div>
+      )}
+    </>
+  );
 }
-
-export default App;

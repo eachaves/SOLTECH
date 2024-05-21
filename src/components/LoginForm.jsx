@@ -1,30 +1,43 @@
 import { useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import Cookies from "universal-cookie";
 
-export default function LoginForm({
-  email,
-  password,
-  handleemailChange,
-  handlePasswordChange,
-}) {
-  const [showText, setShowText] = useState(false);
+export default function LoginForm() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [message, setMessage] = useState("");
+  const navigate = useNavigate();
+  const cookies = new Cookies();
 
-  const handleLogin = async (e) => {
-    e.preventDefault();
+  const handleEmailChange = (event) => {
+    setEmail(event.target.value);
+  };
+
+  const handlePasswordChange = (event) => {
+    setPassword(event.target.value);
+  };
+
+  const handleLogin = async (event) => {
+    event.preventDefault();
     try {
       const response = await axios.post(
         "http://127.0.0.1:8000/api/auth/login/",
         {
-          email,
-          password,
+          email: email,
+          password: password,
         }
       );
-      console.log(response.data);
-      setShowText(true);
-      // Aquí puedes manejar el almacenamiento del token o redirigir al usuario
+      const token = response.data.access;
+      console.log(token);
+      if (response.status === 200) {
+        setMessage("Datos correctos");
+        cookies.set("token", token);
+        navigate("/admin");
+        window.location.reload(); // Add this line to reload the page
+      }
     } catch (error) {
-      console.error("There was an error!", error);
-      setShowText(false);
+      setMessage("Datos incorrectos. Inténtalo de nuevo.");
     }
   };
 
@@ -53,7 +66,7 @@ export default function LoginForm({
                   id="email"
                   placeholder="Correo electrónico"
                   value={email}
-                  onChange={handleemailChange}
+                  onChange={handleEmailChange}
                 />
               </div>
               <div className="mb-6">
@@ -77,13 +90,9 @@ export default function LoginForm({
                 Acceder
               </button>
             </form>
-            {showText && (
-              <p className="flex justify-center text-green-600">
-                Usuario identificado
-              </p>
-            )}
-            <a className="text-blue-700 text-center text-sm" href="/login">
-              ¿Olvidaste tu contraseña?
+            {message && <p className="text-center mt-4">{message}</p>}
+            <a className="text-blue-700 text-center text-sm" href="/register">
+              Regístrate aquí
             </a>
           </div>
         </div>
