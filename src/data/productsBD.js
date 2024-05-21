@@ -8,7 +8,7 @@ export const productsBD = [
       "The industry standard WiFi pentest platform has evolved. Equip your red team with the WiFi Pineapple® Mark VII. Newly refined. Enterprise ready.",
     descriptionLong:
       "Automate WiFi auditing with all new campaigns and get actionable results from vulnerability assessment reports. Command the airspace with a new interactive recon dashboard, and stay on-target and in-scope with the leading rogue access point suite for advanced man-in-the-middle attacks.",
-    price: 139,
+    price: 239,
   },
   {
     id: 2,
@@ -19,7 +19,7 @@ export const productsBD = [
       "The USB Rubber Ducky injects keystrokes at superhuman speeds, violating the inherent trust computers have in humans.",
     descriptionLong:
       "The USB Rubber Ducky injects keystrokes at superhuman speeds, violating the inherent trust computers have in humans. In just seconds, it can run custom scripts and programs, or dump pre-configured payloads, exposing the target computer in a way an attacker can access remotely. ",
-    price: 79,
+    price: 179,
   },
   {
     id: 3,
@@ -30,7 +30,7 @@ export const productsBD = [
       "The LAN Turtle is a covert Systems Administration and Penetration Testing tool providing stealth remote access, network intelligence gathering, and man-in-the-middle surveillance capabilities through a simple graphic shell.",
     descriptionLong:
       "With man-in-the-middle tools built in, you can gobble up all of the interesting data. Supports massive storage options from the MicroSD card reader hidden inside. Save heaps of network traffic, or load it up with all your favorite pentest tools",
-    price: 79,
+    price: 179,
   },
   {
     id: 4,
@@ -41,7 +41,7 @@ export const productsBD = [
       "The groundbreaking payload platform that introduced multi-vector USB attacks has evolved.",
     descriptionLong:
       "Pull off covert attacks or IT automation tasks faster than ever with just the flick of a switch. The NEW Bash Bunny Mark II goes from plug to pwn in 7 seconds — so when the light turns green it's a hacked machine.",
-    price: 120,
+    price: 220,
   },
   {
     id: 5,
@@ -52,7 +52,7 @@ export const productsBD = [
       "A simple payload-based signals intelligence platform with a unique design for discreet planting or mobile operations on any engagement.",
     descriptionLong:
       "The Signal Owl is powered from the USB-A Male pigtail, while data and power are passed through to its USB 2.0 port closest to the pigtail. For example, with a keyboard or mouse plugged inline between this USB pass-through port and the pigtail connected to the target computer, the Signal Owl will not enumerate as a device on the operating system - only the keyboard or mouse will.",
-    price: 90,
+    price: 190,
   },
   {
     id: 6,
@@ -63,7 +63,7 @@ export const productsBD = [
       "Hotplug attack, meet LAN. These pocket-sized pentest boxes perform network assessments in seconds!",
     descriptionLong:
       "Hotplug attack, meet LAN. These pocket-sized pentest boxes perform network assessments in seconds! As tiny Linux computers, they run DuckyScript™ payloads powered by Bash. Armed out-of-the-box with an ultra fast network scanner, you'll get recon with the flick of a switch.",
-    price: 79,
+    price: 179,
   },
   {
     id: 7,
@@ -74,7 +74,7 @@ export const productsBD = [
       "The Key Croc by Hak5 is a keylogger armed with pentest tools, remote access and payloads that trigger multi-vector attacks when chosen keywords are typed. It's the ultimate key-logging pentest implant.",
     descriptionLong:
       "It's simple too. A hidden button turns it into a flash drive, where changing settings is just editing a text file. And with a root shell your favorite pentest tools like nmap, responder, impacket and metasploit are at the ready.",
-    price: 120,
+    price: 220,
   },
   {
     id: 8,
@@ -84,7 +84,7 @@ export const productsBD = [
       "Network Interception and Manipulation at the Flip of a Switch",
     descriptionLong:
       "The newest version of this field-proven network multi-tool packs advanced attacks in a pocket-sized form factor. Effortlessly write powerful payloads for any purpose with familiar scripting languages",
-    price: 100,
+    price: 200,
   },
   {
     id: 9,
@@ -95,7 +95,7 @@ export const productsBD = [
       "This exclusive Field Kit combines the most popular Hak5 signature gear, all compiled in our Elite Equipment Wrap.",
     descriptionLong:
       "The Hak5 Field Kit is a comprehensive pentesting toolkit that includes multiple Hak5 devices and accessories, allowing you to perform a wide range of security assessments and penetration tests.",
-    price: 599,
+    price: 699,
   },
   {
     id: 10,
@@ -106,7 +106,7 @@ export const productsBD = [
       "The USB Rubber Ducky injects keystrokes at superhuman speeds, violating the inherent trust computers have in humans.",
     descriptionLong:
       "The USB Rubber Ducky injects keystrokes at superhuman speeds, violating the inherent trust computers have in humans. In just seconds, it can run custom scripts and programs, or dump pre-configured payloads, exposing the target computer in a way an attacker can access remotely. ",
-    price: 130,
+    price: 230,
   },
   {
     id: 11,
@@ -117,7 +117,7 @@ export const productsBD = [
       "The industry standard WiFi pentest platform has evolved. Equip your red team with the WiFi Pineapple® Mark VII. Newly refined. Enterprise ready.",
     descriptionLong:
       "The Hak5 WiFi Pineapple Mark VII is a powerful rogue access point and pentest platform that allows you to quickly set up and deploy advanced Wi-Fi penetration testing scenarios.",
-    price: 200,
+    price: 300,
   },
   {
     id: 12,
@@ -128,6 +128,6 @@ export const productsBD = [
       "The Hak5 Bash Bunny Mark II is an upgraded multi-function USB attack and automation platform.",
     descriptionLong:
       "The Hak5 Bash Bunny Mark II is an upgraded multi-function USB attack and automation platform that offers enhanced performance, expanded capabilities, and improved compatibility.",
-    price: 180,
+    price: 280,
   },
 ];
