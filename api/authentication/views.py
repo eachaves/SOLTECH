@@ -23,6 +23,7 @@ def login_view(request):
     except Exception as e:
         return Response(e.args[0], status=e.args[1])
 
+
 @api_view(['POST'])
 def signup_view(request):
     try:
@@ -38,7 +39,8 @@ def signup_view(request):
         }, status=status.HTTP_201_CREATED)
     except Exception as e:
         return Response({'message': e.args[0]}, status=e.args[1])
-    
+
+
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
 def get_all_users_view(request):
@@ -47,6 +49,7 @@ def get_all_users_view(request):
         return Response(UserSerializer(users, many=True).data, status=status.HTTP_200_OK)
     except Exception as e:
         return Response(str(e), status=500)
+
 
 @api_view(['DELETE'])
 @permission_classes([IsAuthenticated])

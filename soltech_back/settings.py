@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
+from datetime import timedelta
 from pathlib import Path
 
 
@@ -45,6 +46,7 @@ INSTALLED_APPS = [
     'api.empleado',
     'rest_framework',
     'rest_framework_simplejwt',
+    'corsheaders',
 
 ]
 
@@ -55,14 +57,13 @@ REST_FRAMEWORK = {
 }
 AUTH_USER_MODEL = 'authentication.User'
 
-from datetime import timedelta
 
 SIMPLE_JWT = {
     'ACCESS_TOKEN_LIFETIME': timedelta(minutes=60),
     'REFRESH_TOKEN_LIFETIME': timedelta(days=1),
     'ROTATE_REFRESH_TOKENS': False,
     'BLACKLIST_AFTER_ROTATION': True,
-    
+
 }
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -72,6 +73,14 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
+]
+
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:3000",
+    "http://127.0.0.1:3000",
+    "http://localhost:5173",
+    "http://127.0.0.1:5173"
 ]
 
 ROOT_URLCONF = 'soltech_back.urls'
