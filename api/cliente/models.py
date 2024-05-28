@@ -6,9 +6,10 @@ from django.utils.translation import gettext_lazy as _
 
 class Cliente(models.Model):
     user= models.OneToOneField(User, on_delete=models.CASCADE)
-    telefono = models.IntegerField()
-    avatar = models.URLField()
-    bio= models.TextField()
+    telefono = models.IntegerField(null=True, blank=True)
+    avatar = models.URLField(null=True, blank=True)
+    bio= models.TextField(null=True, blank=True)
+    is_empresa = models.BooleanField(default=False, null=True, blank=True)
     
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)

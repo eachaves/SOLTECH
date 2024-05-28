@@ -7,7 +7,7 @@ class User(AbstractUser):
         max_length=100, null=True, blank=True, unique=True)
     first_name = models.CharField(max_length=100)
     last_name = models.CharField(max_length=100)
-    is_superuser = models.BooleanField(default=False)
+    is_superuser = models.BooleanField(default=False, null=True, blank=True)
     email = models.EmailField(max_length=100)
     password = models.CharField(max_length=100)
     created_at = models.DateTimeField(auto_now_add=True)

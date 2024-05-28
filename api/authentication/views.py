@@ -1,4 +1,4 @@
-from .serializer import UserSerializer, UserLoginSerializer
+from .serializer import UserSerializer, UserLoginSerializer, SignUpSerializer
 from rest_framework.response import Response
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework import status
@@ -27,7 +27,7 @@ def login_view(request):
 @api_view(['POST'])
 def signup_view(request):
     try:
-        user = UserSerializer(data=request.data)
+        user = SignUpSerializer(data=request.data)
         if not user.is_valid():
             return Response(user.errors, status=status.HTTP_400_BAD_REQUEST)
         user = signup(user)
@@ -45,10 +45,13 @@ def signup_view(request):
 @permission_classes([IsAuthenticated])
 def get_all_users_view(request):
     try:
+        admin = get_user(request.user)
+        if not admin.is_superuser:
+            raise Exception('You do not have permission to get all users', 403)
         users = get_all_users()
         return Response(UserSerializer(users, many=True).data, status=status.HTTP_200_OK)
     except Exception as e:
-        return Response(str(e), status=500)
+        return Response({'message': e.args[0]}, status=e.args[1])
 
 
 @api_view(['DELETE'])

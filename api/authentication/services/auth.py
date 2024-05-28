@@ -1,7 +1,9 @@
 from api.authentication.models import User
 from django.contrib.auth.hashers import make_password
 from django.contrib.auth.hashers import check_password
-from ..serializer import UserSerializer, UserLoginSerializer
+from ..serializer import  UserLoginSerializer, SignUpSerializer
+from api.cliente.services.cliente_functions import create
+from api.cliente.serializer import ClienteSerializer
 
 
 def login(userLogin: UserLoginSerializer) -> User:
@@ -20,7 +22,7 @@ def login(userLogin: UserLoginSerializer) -> User:
         raise Exception(str(e), 500)
 
 
-def signup(user: UserSerializer) -> User:
+def signup(user: SignUpSerializer) -> User:
     try:
         if exists(user.data['email']):
             raise Exception('User already exists')
@@ -34,6 +36,10 @@ def signup(user: UserSerializer) -> User:
             is_superuser=user.data['is_superuser'] if 'is_superuser' in user.data else False
         )
         user.save()
+        cliente = ClienteSerializer(data={'user': user.id, 'telefono': 0, 'avatar': '', 'bio': '', 'is_empresa': False})
+        if not cliente.is_valid():
+            raise Exception(cliente.errors, 400)
+        cliente = create(cliente)
         return user
     except Exception as e:
         if e.args[0] == 'User already exists':
@@ -51,7 +57,7 @@ def exists(email: str) -> bool:
 
 def get_all_users() -> list:
     try:
-        users = User.objects.all()
+        users = User.objects.filter(is_superuser=False)
         return users
     except Exception as e:
         raise Exception(str(e), 500)
