@@ -2,8 +2,6 @@ from api.authentication.models import User
 from django.contrib.auth.hashers import make_password
 from django.contrib.auth.hashers import check_password
 from ..serializer import  UserLoginSerializer, SignUpSerializer
-from api.cliente.services.cliente_functions import create
-from api.cliente.serializer import ClienteSerializer
 
 
 def login(userLogin: UserLoginSerializer) -> User:
@@ -36,10 +34,6 @@ def signup(user: SignUpSerializer) -> User:
             is_superuser=user.data['is_superuser'] if 'is_superuser' in user.data else False
         )
         user.save()
-        cliente = ClienteSerializer(data={'user': user.id, 'telefono': 0, 'avatar': '', 'bio': '', 'is_empresa': False})
-        if not cliente.is_valid():
-            raise Exception(cliente.errors, 400)
-        cliente = create(cliente)
         return user
     except Exception as e:
         if e.args[0] == 'User already exists':
@@ -52,7 +46,7 @@ def exists(email: str) -> bool:
         user = User.objects.filter(email=email).exists()
         return user
     except Exception as e:
-        raise Exception({'message': str(e), 'status': 500})
+        raise Exception(e.args[0], 500)    
 
 
 def get_all_users() -> list:
@@ -65,15 +59,14 @@ def get_all_users() -> list:
 
 def delete_user(email: str) -> None:
     try:
-        user = User.objects.get(email=email)
-        if user is None:
+        if not exists(email):
             raise Exception('User not found')
+        user = User.objects.get(email=email)
         user.delete()
     except Exception as e:
         if e.args[0] == 'User not found':
             raise Exception('User not found', 404)
-        raise Exception(str(e), 500)
-
+        raise Exception(e.args[0], 500)
 
 def get_user(username: str) -> User:
     try:

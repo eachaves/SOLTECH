@@ -11,7 +11,7 @@ from api.authentication.services.auth import get_user
 def create_equipo_view(request):
     try:
         if not get_user(request.user).is_superuser:
-            return Response('Unauthorized', status=status.HTTP_401_UNAUTHORIZED)
+            raise Exception('You do not have permission to create an equipo', 403)
         equipo = EquipoSerializer(data=request.data)
         if not equipo.is_valid():
             return Response(equipo.errors, status=status.HTTP_400_BAD_REQUEST)
@@ -19,7 +19,7 @@ def create_equipo_view(request):
         return Response(EquipoSerializer(equipo).data, status=status.HTTP_201_CREATED)
     except Exception as e:
         print(e)
-        return Response(e.args[0], status=e.args[1]) 
+        return Response({'message': e.args[0]}, status=e.args[1])
 
 @api_view(['GET'])
 def get_all_equipos_view(request):
@@ -27,7 +27,7 @@ def get_all_equipos_view(request):
         equipos = get_all()
         return Response(EquipoSerializer(equipos, many=True).data, status=status.HTTP_200_OK)
     except Exception as e:
-        return Response(e.args[0], status=e.args[1])
+        return Response({'message': e.args[0]}, status=e.args[1])
     
 @api_view(['GET'])
 def get_equipo_view(request, id):
@@ -35,14 +35,14 @@ def get_equipo_view(request, id):
         equipo = get_by_id(id)
         return Response(EquipoSerializer(equipo).data, status=status.HTTP_200_OK)
     except Exception as e:
-        return Response(e.args[0], status=e.args[1])
+        return Response({'message': e.args[0]}, status=e.args[1])
     
 @api_view(['PATCH'])
 @permission_classes([IsAuthenticated])
 def update_equipo_view(request, id):
     try:
         if not get_user(request.user).is_superuser:
-            return Response('Unauthorized', status=status.HTTP_401_UNAUTHORIZED)
+            raise Exception('You do not have permission to update an equipo', 403)
         equipo = EquipoSerializerUpdate(data=request.data)
         if not equipo.is_valid():
             return Response(equipo.errors, status=status.HTTP_400_BAD_REQUEST)
@@ -50,15 +50,15 @@ def update_equipo_view(request, id):
         return Response(EquipoSerializer(equipo).data, status=status.HTTP_200_OK)
     except Exception as e:
         print(e)
-        return Response(e.args[0], status=e.args[1])
+        return Response({'message': e.args[0]}, status=e.args[1])
     
 @api_view(['DELETE'])
 @permission_classes([IsAuthenticated])
 def delete_equipo_view(request, id):
     try:
         if not get_user(request.user).is_superuser:
-            return Response('Unauthorized', status=status.HTTP_401_UNAUTHORIZED)
+            raise Exception('You do not have permission to delete an equipo', 403)
         delete(id)
-        return Response('Equipo deleted', status=status.HTTP_200_OK)
+        return Response({'message': 'Equipo deleted successfully'}, status=status.HTTP_200_OK)
     except Exception as e:
-        return Response(e.args[0], status=e.args[1])
+        return Response({'message': e.args[0]}, status=e.args[1])

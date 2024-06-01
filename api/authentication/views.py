@@ -24,7 +24,7 @@ def login_view(request):
         return Response(e.args[0], status=e.args[1])
 
 
-@api_view(['POST'])
+"""@api_view(['POST'])
 def signup_view(request):
     try:
         user = SignUpSerializer(data=request.data)
@@ -38,7 +38,7 @@ def signup_view(request):
             'user': UserSerializer(user).data
         }, status=status.HTTP_201_CREATED)
     except Exception as e:
-        return Response({'message': e.args[0]}, status=e.args[1])
+        return Response({'message': e.args[0]}, status=e.args[1])"""
 
 
 @api_view(['GET'])
@@ -56,9 +56,12 @@ def get_all_users_view(request):
 
 @api_view(['DELETE'])
 @permission_classes([IsAuthenticated])
-def delete_user_view(request):
+def delete_user_view(request, email):
     try:
-        user = delete_user(request.data['email'])
-        return Response('User deleted', status=status.HTTP_200_OK)
+        admin = get_user(request.user)
+        if not admin.is_superuser:
+            raise Exception('You do not have permission to delete a user', 403)
+        delete_user(email)
+        return Response({'message': 'User deleted'}, status=status.HTTP_200_OK)
     except Exception as e:
         return Response({'message': e.args[0]}, status=e.args[1])

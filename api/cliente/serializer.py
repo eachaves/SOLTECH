@@ -13,4 +13,9 @@ class ClienteCreateAdminSerializer(serializers.Serializer):
     email = serializers.EmailField()
     password = serializers.CharField() 
     
+class ClienteUpdateProfilesSerializer(serializers.Serializer):
+    telefono = serializers.IntegerField()
+    avatar = serializers.URLField()
+    bio = serializers.CharField()
+    
     

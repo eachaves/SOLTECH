@@ -2,10 +2,9 @@ from .serializer import EmployeeCreateAdminSerializer
 from rest_framework.response import Response
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework import status
-from .services.crud import create#, get, update, delete
+from .services.crud_admin import create#, get, update, delete
 from rest_framework.permissions import IsAuthenticated
 from api.authentication.services.auth import get_user
-
 
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
