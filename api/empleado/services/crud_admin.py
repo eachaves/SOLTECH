@@ -1,5 +1,5 @@
 from ..models import Empleado
-from ..serializer import EmployeeCreateAdminSerializer, EmployeeCreatedSerializer
+from ..serializer import EmployeeCreateAdminSerializer, EmployeeCreatedSerializer, EmpleadoSerializer
 from api.authentication.serializer import SignUpSerializer
 from api.authentication.services.auth import signup
 
@@ -39,5 +39,12 @@ def create(empleado: EmployeeCreateAdminSerializer) -> EmployeeCreatedSerializer
         if not employee.is_valid():
             raise Exception(employee.errors, 400)
         return employee
+    except Exception as e:
+        raise Exception(e.args[0], 500)
+
+def get_all() -> list[Empleado]:
+    try:
+        empleados = Empleado.objects.all()
+        return empleados
     except Exception as e:
         raise Exception(e.args[0], 500)
