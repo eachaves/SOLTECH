@@ -1,6 +1,6 @@
 from django.apps import AppConfig
 
 
-class CompraConfig(AppConfig):
+class VentaConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
-    name = 'api.compra'
+    name = 'api.venta'

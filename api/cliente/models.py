@@ -27,7 +27,7 @@ class Direccion(models.Model):
 
     ADDRESS_CHOICES = ((BILLING, _("billing")), (SHIPPING, _("shipping")))
 
-    cliente = models.ForeignKey(Cliente, related_name="addresses", on_delete=models.CASCADE)
+    cliente = models.ForeignKey(Cliente, on_delete=models.CASCADE)
     tipo_direcciom = models.CharField(max_length=1, choices=ADDRESS_CHOICES)
     defecto = models.BooleanField(default=False)
     pais = models.CharField(max_length=100)

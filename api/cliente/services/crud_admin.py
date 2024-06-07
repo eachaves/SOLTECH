@@ -1,5 +1,5 @@
 
-from ..models import Cliente
+from ..models import Cliente, Direccion
 from api.authentication.serializer import SignUpSerializer
 from api.authentication.services.auth import signup
 from api.authentication.models import User
@@ -27,20 +27,15 @@ def create_by_admin(cliente: SignUpSerializer) -> User:
     except Exception as e:
         raise Exception(e.args[0], 500)
     
-    
-def delete_by_admin(id: int) -> None:
-    try:
-        if not exists(id):
-            raise Exception('Cliente not found')
-        cliente= Cliente.objects.get(id=id)
-        cliente.delete()
-    except Exception as e:
-        if e.args[0] == 'Cliente not found':
-            raise Exception('Cliente not found', 404)
-        raise Exception(e.args[0], 500)
- 
 def exists(id:int) -> bool:
     try:
         return Cliente.objects.filter(id=id).exists()
+    except Exception as e:
+        raise Exception(e.args[0], 500)
+    
+def get_all_direcciones_by_admin() -> list[Direccion]:
+    try:
+        direcciones= Direccion.objects.all()
+        return direcciones
     except Exception as e:
         raise Exception(e.args[0], 500)

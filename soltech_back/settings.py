@@ -41,13 +41,12 @@ INSTALLED_APPS = [
     'api.authentication',
     'api.equipo',
     'api.cliente',
-    'api.compra',
     'api.consultoria',
     'api.empleado',
+    'api.venta',
     'rest_framework',
     'rest_framework_simplejwt',
     'corsheaders',
-
 ]
 
 REST_FRAMEWORK = {

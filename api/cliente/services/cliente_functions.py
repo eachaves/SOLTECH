@@ -1,4 +1,3 @@
-
 from ..models import Cliente
 from ..serializer import ClienteUpdateProfilesSerializer
 from api.authentication.serializer import SignUpSerializer
@@ -42,9 +41,25 @@ def get_cliente_by_user_id(user_id: int) -> Cliente:
         return Cliente.objects.get(user=user_id)
     except Exception as e:
         raise Exception(e.args[0], 500)
+    
+def get_cliente_by_id(id: int) -> Cliente:
+    try:
+        if not exists(id):
+            raise Exception('Cliente not found')
+        return Cliente.objects.get(id=id)
+    except Exception as e:
+        if e.args[0] == 'Cliente not found':
+            raise Exception('Cliente not found', 404)
+        raise Exception(e.args[0], 500)
         
 def exists_by_user_id(user_id: int) -> bool:
     try:
         return Cliente.objects.filter(user=user_id).exists()
+    except Exception as e:
+        raise Exception(e.args[0], 500)
+    
+def exists(id: int) -> bool:
+    try:
+        return Cliente.objects.filter(id=id).exists()
     except Exception as e:
         raise Exception(e.args[0], 500)
