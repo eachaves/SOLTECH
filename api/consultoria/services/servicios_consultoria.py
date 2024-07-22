@@ -4,6 +4,7 @@ from ..models import ServicioConsultoria
 from ...cliente.services import cliente_functions as cliente_crud
 from ...empleado.services import crud as empleado_crud
 from ...consultoria.services import crud as consultoria_crud
+from typing import List
 
 import datetime
 def create_servicio(servicio: ServicioConsultoriaCreateSerializer) -> ServicioConsultoria:
@@ -22,7 +23,7 @@ def create_servicio(servicio: ServicioConsultoriaCreateSerializer) -> ServicioCo
     except Exception as e:
         raise Exception(e.args[0], 500)
 
-def get_all_servicios() -> list[ServicioConsultoria]:
+def get_all_servicios() -> List[ServicioConsultoria]:
     try:
         return ServicioConsultoria.objects.all()
     except Exception as e:

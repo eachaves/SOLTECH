@@ -1,6 +1,6 @@
 from ..models import Equipo
 from ..serializers import EquipoSerializer, EquipoSerializerUpdate
-
+from typing import List
 def create(equipo: EquipoSerializer) -> Equipo:
     try:
         equipo = Equipo(
@@ -15,7 +15,7 @@ def create(equipo: EquipoSerializer) -> Equipo:
     except Exception as e:
         raise Exception(e.args[0], 500)
     
-def get_all() -> list:
+def get_all() -> List:
     try:
         return Equipo.objects.all()
     except Exception as e:

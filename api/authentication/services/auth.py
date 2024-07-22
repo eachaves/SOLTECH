@@ -2,6 +2,7 @@ from api.authentication.models import User
 from django.contrib.auth.hashers import make_password
 from django.contrib.auth.hashers import check_password
 from ..serializer import  UserLoginSerializer, SignUpSerializer
+from typing import List
 
 
 def login(userLogin: UserLoginSerializer) -> User:
@@ -49,7 +50,7 @@ def exists(email: str) -> bool:
         raise Exception(e.args[0], 500)    
 
 
-def get_all_users() -> list:
+def get_all_users() -> List:
     try:
         users = User.objects.filter(is_superuser=False)
         return users

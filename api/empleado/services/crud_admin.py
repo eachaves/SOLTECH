@@ -2,6 +2,7 @@ from ..models import Empleado
 from ..serializer import EmployeeCreateAdminSerializer, EmployeeCreatedSerializer, EmpleadoSerializer
 from api.authentication.serializer import SignUpSerializer
 from api.authentication.services.auth import signup
+from typing import List
 
 def create(empleado: EmployeeCreateAdminSerializer) -> EmployeeCreatedSerializer:
     try:
@@ -42,7 +43,7 @@ def create(empleado: EmployeeCreateAdminSerializer) -> EmployeeCreatedSerializer
     except Exception as e:
         raise Exception(e.args[0], 500)
 
-def get_all() -> list[Empleado]:
+def get_all() -> List[Empleado]:
     try:
         empleados = Empleado.objects.all()
         return empleados

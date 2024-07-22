@@ -1,5 +1,6 @@
 from ..models import Consultoria
 from ..serializers import ConsultoriaSerializer
+from typing import List
 
 def create(consultoria: ConsultoriaSerializer) -> Consultoria:
     try:
@@ -13,7 +14,7 @@ def create(consultoria: ConsultoriaSerializer) -> Consultoria:
     except Exception as e:
         raise Exception(e.args[0], 500)
     
-def get_all() -> list:
+def get_all() -> List:
     try:
         return Consultoria.objects.all()
     except Exception as e:

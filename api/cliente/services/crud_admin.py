@@ -34,7 +34,7 @@ def exists(id:int) -> bool:
     except Exception as e:
         raise Exception(e.args[0], 500)
     
-def get_all_direcciones_by_admin() -> list[Direccion]:
+def get_all_direcciones_by_admin() -> List[Direccion]:
     try:
         direcciones= Direccion.objects.all()
         return direcciones
