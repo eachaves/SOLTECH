@@ -2,7 +2,7 @@ from ..models import Venta
 from ..services.crud import get_by_id
 
 from ..serializer import VentaSerializer, VentaWithItemsSerializer, VentaItemSerializer
-
+from typing import List
 def total_cost(venta_id:int):
     try:
         venta = get_by_id(venta_id)
@@ -10,7 +10,7 @@ def total_cost(venta_id:int):
     except Exception as e:
         raise Exception(e.args[0], 500)
     
-def ventas_cliente(cliente_id: int) -> list[VentaWithItemsSerializer]:
+def ventas_cliente(cliente_id: int) -> List[VentaWithItemsSerializer]:
     try:
         ventas = get_ventas_cliente(cliente_id)
         lista = []
@@ -44,7 +44,7 @@ def ventas_cliente(cliente_id: int) -> list[VentaWithItemsSerializer]:
         raise Exception(e.args[0], 500)
 
 
-def get_ventas_cliente(cliente_id: int) -> list[Venta]:
+def get_ventas_cliente(cliente_id: int) -> List[Venta]:
     try:
         ventas= Venta.objects.filter(comprador=cliente_id)
         return ventas
