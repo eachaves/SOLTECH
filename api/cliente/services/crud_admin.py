@@ -3,9 +3,10 @@ from ..models import Cliente, Direccion
 from api.authentication.serializer import SignUpSerializer
 from api.authentication.services.auth import signup
 from api.authentication.models import User
+from typing import List
 
 
-def get_all() -> list[Cliente]:
+def get_all() -> List[Cliente]:
     try:
         return Cliente.objects.all()
     except Exception as e:
